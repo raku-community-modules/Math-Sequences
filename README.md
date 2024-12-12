@@ -70,7 +70,7 @@ Math::Sequences::Real
 
 Real sequences
 
-### `class Reals`
+### class Reals
 
 Generic Real number sequences class
 
@@ -215,29 +215,25 @@ Entering symbols
 
 To enter each of these Unicode symbols, here are common shortcuts in vim and emacs:
 
-ℤ - DOUBLE-STRUCK CAPITAL Z - U+2124
-------------------------------------
+### ℤ - DOUBLE-STRUCK CAPITAL Z - U+2124
 
   * vim - Ctrl-v u 2 1 2 4
 
   * emacs - Ctrl-x 8 `enter` 2 1 2 4 `enter`
 
-𝕀 - MATHEMATICAL DOUBLE-STRUCK CAPITAL I - U+1D540
---------------------------------------------------
+### 𝕀 - MATHEMATICAL DOUBLE-STRUCK CAPITAL I - U+1D540
 
   * vim - Ctrl-v U 0 0 0 1 d 5 4 0
 
   * emacs - Ctrl-x 8 `enter` 1 d 5 4 0 `enter`
 
-ℕ - DOUBLE-STRUCK CAPITAL N - U+2115
-------------------------------------
+### ℕ - DOUBLE-STRUCK CAPITAL N - U+2115
 
   * vim - Ctrl-v u 2 1 1 5
 
   * emacs - Ctrl-x 8 `enter` 2 1 1 5 `enter`
 
-ℝ - DOUBLE-STRUCK CAPITAL R - U+211D
-------------------------------------
+### ℝ - DOUBLE-STRUCK CAPITAL R - U+211D
 
   * vim - Ctrl-v u 2 1 1 d
 

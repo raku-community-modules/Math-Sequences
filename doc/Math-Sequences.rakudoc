@@ -71,7 +71,7 @@ can be the C<%oeis-core> aliases or the OEIS key such as C<A000001>.
 
 Real sequences
 
-=head3 C<class Reals>
+=head3 class Reals
 
 Generic Real number sequences class
 
@@ -242,22 +242,22 @@ for each of the above:
 To enter each of these Unicode symbols, here are common shortcuts in
 vim and emacs:
 
-=head2 ℤ - DOUBLE-STRUCK CAPITAL Z - U+2124
+=head3 ℤ - DOUBLE-STRUCK CAPITAL Z - U+2124
 
 =item vim - Ctrl-v u 2 1 2 4
 =item emacs - Ctrl-x 8 C<<enter>> 2 1 2 4 C<<enter>>
 
-=head2 𝕀 - MATHEMATICAL DOUBLE-STRUCK CAPITAL I - U+1D540
+=head3 𝕀 - MATHEMATICAL DOUBLE-STRUCK CAPITAL I - U+1D540
 
 =item vim - Ctrl-v U 0 0 0 1 d 5 4 0
 =item emacs - Ctrl-x 8 C<<enter>> 1 d 5 4 0 C<<enter>>
 
-=head2 ℕ - DOUBLE-STRUCK CAPITAL N - U+2115
+=head3 ℕ - DOUBLE-STRUCK CAPITAL N - U+2115
 
 =item vim - Ctrl-v u 2 1 1 5
 =item emacs - Ctrl-x 8 C<<enter>> 2 1 1 5 C<<enter>>
 
-=head2 ℝ - DOUBLE-STRUCK CAPITAL R - U+211D
+=head3 ℝ - DOUBLE-STRUCK CAPITAL R - U+211D
 
 =item vim - Ctrl-v u 2 1 1 d
 =item emacs - Ctrl-x 8 C<<enter>> 2 1 1 d C<<enter>>
