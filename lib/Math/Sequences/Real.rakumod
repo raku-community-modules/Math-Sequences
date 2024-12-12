@@ -26,7 +26,7 @@ class Reals is Range is export {
         }
     }
 
-    method perl {
+    method raku {
         "Reals.new(" ~ self!params.join(",") ~ ")"
     }
 
@@ -62,4 +62,4 @@ my constant \ℝ is export = Reals.new;
 
 my constant \R is export = Reals.new;
 
-# vim: sw=4 softtabstop=4 expandtab ai ft=perl6
+# vim: expandtab shiftwidth=4

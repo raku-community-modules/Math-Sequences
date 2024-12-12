@@ -1,10 +1,6 @@
-#!/usr/bin/env perl6
-
-use v6.c;
-
 use Math::Sequences::Integer :support, :DEFAULT;
 
-#= Give the closest prime number to the given integer.
+#| Give the closest prime number to the given integer.
 sub MAIN(Int $n) {
 	for @A000040 -> $prime {
 		state $prev = Nil;
@@ -19,3 +15,5 @@ sub MAIN(Int $n) {
 		$prev = $prime;
 	}
 }
+
+# vim: expandtab shiftwidth=4

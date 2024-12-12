@@ -1,8 +1,6 @@
-use v6.c;
+use Test;
 
 use Math::Util::SpellNumbers;
-
-use Test;
 
 my %tests = (
 	10 => 'ten',
@@ -17,3 +15,5 @@ plan %tests.elems;
 for %tests.kv -> $number, $name {
 	is as-words($number, :lang<en>), $name, $name;
 }
+
+# vim: expandtab shiftwidth=4

@@ -3,9 +3,7 @@
 # This module is absolutely not meant to be exhausive.
 # It should contain only those sequences that are frequently needed.
 
-use v6.c;
-
-unit module Math::Sequences::Integer is export;
+unit module Math::Sequences::Integer;
 
 class Integers is Range is export {
     multi method new(
@@ -35,13 +33,13 @@ class Integers is Range is export {
     }
 
     method !params {
-        self.min.perl, self.max.perl,
+        self.min.raku, self.max.raku,
             |(<excludes-min excludes-max>.map: -> $param {
                 ":{$param}(" ~ self."$param"() ~ ')'
             });
     }
 
-    method perl {
+    method raku {
         "Integers.new(" ~ self!params.join(",") ~ ")"
     }
 
@@ -177,7 +175,7 @@ multi sub Entringer($n, $k) { %Entringer{"$n,$k"} //= Entringer($n, $k - 1) + En
 # Per OEIS A000123
 sub binpart($n) { $n ?? binpart($n-1) + binpart($n div 2) !! 1 }
 
-our %BROKEN = %();
+our %BROKEN = %(A003418 => "dispatch error in core");
 
 sub factorial($n) is export(:support) { ([*] 1..$n) or 1 }
 
@@ -190,8 +188,8 @@ sub factors($n is copy, :%map) is export(:support) {
         } else {
             .take for prime-factors($n);
 
-            ### Inline factoring code from Perl 6 module Prime::Factor ########
-            ### https://modules.perl6.org/search/?q=Prime+Factor
+            ### Inline factoring code from Raku module Prime::Factor ########
+            ### https://raku.land/zef:thundergnat/Prime::Factor
             ### Used with permission.
 
             sub prime-factors ( Int $n where * > 0 ) {
@@ -357,8 +355,7 @@ multi Sterling2 (Int \n, Int \k) is export(:support) {
 }
 
 sub Horadam( Int $p, Int $q, Int $r, Int $s ) {
-  my @horadam = $p, $q, {$^n1 × $r + $^n2 × $s} … ∞;
-  return @horadam;
+  [ $p, $q, {$^n1 × $r + $^n2 × $s} … ∞]
 }
 
 
@@ -1206,10 +1203,10 @@ sub OEIS($name, Bool :$search=False) is export {
         my %matches = %oeis-core.pairs.grep: -> $kv { $kv.key.starts-with: $name };
         my $A-entry = A-entry $name;
         %matches{$name} //= $A-entry if $A-entry.defined;
-        return %matches;
+        %matches
     } else {
-        return A-entry($name) // %oeis-core{$name};
+        A-entry($name) // %oeis-core{$name}
     }
 }
 
-# vim: sw=4 softtabstop=4 expandtab ai ft=perl6
+# vim: expandtab shiftwidth=4

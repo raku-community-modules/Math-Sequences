@@ -1,6 +1,5 @@
-# Test OEIS sequences  -*- mode: perl6 -*-
+# Test OEIS sequences
 #
-
 use Test;
 use Math::Sequences::Integer;
 
@@ -928,3 +927,5 @@ for @core-sequences {
 #
 # 4. Commercial uses may be licensed by special arrangement with the OEIS
 # Foundation Inc..
+
+# vim: expandtab shiftwidth=4

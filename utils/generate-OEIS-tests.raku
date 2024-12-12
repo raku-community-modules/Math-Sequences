@@ -1,4 +1,3 @@
-#!/usr/bin/env perl6
 #
 # Generate the OEIS sequences test
 
@@ -94,12 +93,14 @@ my $footer = q:to<END_FOOTER>;
     #
     # 4. Commercial uses may be licensed by special arrangement with the OEIS
     # Foundation Inc..
+
+    # vim: expandtab shiftwidth=4
     END_FOOTER
 
 if not "t".IO ~~ :d {
     die "Cannot find test subdir 't'";
 }
-my $test-script = "t/OEIS.t6";
+my $test-script = "t/OEIS.rakutest";
 my $test-script-temp = $test-script ~ ".tmp";
 my $fh = open($test-script-temp, :w);
 $fh.say($preamble);
@@ -129,4 +130,4 @@ sub get-sequence($name) {
     }
 }
 
-# vim: sw=4 softtabstop=4 expandtab ai ft=perl6
+# vim: expandtab shiftwidth=4

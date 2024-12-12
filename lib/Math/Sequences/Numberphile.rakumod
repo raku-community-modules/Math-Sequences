@@ -264,7 +264,7 @@ multi spiral-board(Int $size where * !%% 2, Bool :$flip, Int :$rotate=0) {
 	for ^$rotate {
 		@board = ((^$size).reverse).map: -> $y { @board[^$size;$y] };
 	}
-	return @board;
+	@board
 }
 
 sub spiral-knight() {
@@ -296,3 +296,5 @@ sub spiral-knight() {
 # A316667 - Squares visited by knight moves on a spirally numbered board
 # and moving to the lowest available unvisited square at each step.
 our @A316667 is export = spiral-knight;
+
+# vim: expandtab shiftwidth=4

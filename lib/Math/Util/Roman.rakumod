@@ -4,8 +4,6 @@
 #
 # By Aaron Sherman 2019
 
-use v6.c;
-
 # Some globals relevant to both encoding and decoding
 our $rom = 'MDCLXVI';
 our @rom = $rom.comb;
@@ -21,7 +19,7 @@ sub as_roman($n is copy) is export {
     # because we're going to do some lookahead.
     # After we get all of the values, we string-concatenate them
     # (via the [~] concatenation-reduction operator)
-    return [~] gather for ^@val Z @val Z @rom -> ($i, $v, $r) {
+    [~] gather for ^@val Z @val Z @rom -> ($i, $v, $r) {
         # First the easy par: get the number of times $n is
         # wholly divisible by the current value and add that
         # many copies of $r (from @rom) to the result.
@@ -38,13 +36,13 @@ sub as_roman($n is copy) is export {
             take $roff ~ $r if $v > 1 and $n >= $v-$voff;
             $n -= $v-$voff;
         }
-    };
+    }
 }
 
 sub from_roman(Str $n) is export {
     sub value($c) { @val[$rom.index($c)] }
     die "'$n' is not valid" if $n.uc !~~ m:i{^$roman_regex$};
-    return [+] gather for $n.uc ~~ m:g/CM|M|CD|D|XC|C|XL|L|IX|X|IV|V|I/ -> $r {
+    [+] gather for $n.uc ~~ m:g/CM|M|CD|D|XC|C|XL|L|IX|X|IV|V|I/ -> $r {
         if $r.chars == 1 {
             take value($r);
         } else {
@@ -52,3 +50,5 @@ sub from_roman(Str $n) is export {
         }
     }
 }
+
+# vim: expandtab shiftwidth=4

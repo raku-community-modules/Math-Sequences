@@ -1,11 +1,9 @@
-#!/usr/bin/env perl6
-
 # example usage:
-#   ./populate-issues.p6 "I know what I'm doing" YOUR-ACCESS-TOKEN A000005 A000007
+#   ./populate-issues.raku "I know what I'm doing" YOUR-ACCESS-TOKEN A000005 A000007
 
-# Based on this script: https://github.com/perl6/ecosystem-unbitrot/blob/master/scripts/populate-issues.p6
+# Based on this script: https://github.com/raku/ecosystem-unbitrot/blob/master/scripts/populate-issues.raku
 
-my $repo = ‘ajs/perl6-Math-Sequences’;
+my $repo = ‘raku-community-modules/Math-Sequences’;
 my $url  = “https://api.github.com/repos/$repo/issues”;
 
 sub body-template($entry, $short-name) {
@@ -52,12 +50,12 @@ sub submit-issue(:$token, :$title, :$body, :@labels) {
     use Cro::HTTP::Client;
     my $resp = await Cro::HTTP::Client.post: $url,
           headers => [
-              User-Agent => ‘perl6 squashathon’,
+              User-Agent => ‘Raku squashathon’,
               Authorization => “token $token”,
           ],
           content-type => ‘application/json’,
           body => %body,
     ;
 
-    return (await $resp.body)<number> # issue number
+    (await $resp.body)<number> # issue number
 }

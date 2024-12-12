@@ -1,0 +1,7 @@
+use Test;
+
+plan 1;
+
+dies-ok { require Math::Sequences }
+
+# vim: expandtab shiftwidth=4

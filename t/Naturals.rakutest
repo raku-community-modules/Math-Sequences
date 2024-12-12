@@ -1,8 +1,6 @@
-use lib 'lib'; # -*- mode: perl6 -*-
+use Test;
 
 use Math::Sequences::Integer;
-
-use Test;
 
 plan 3;
 
@@ -34,4 +32,4 @@ subtest {
 
 is 𝕀.from(20)[1], 21, "Arbitrary starting point";
 
-# vim: sw=4 softtabstop=4 expandtab ai ft=perl6
+# vim: expandtab shiftwidth=4

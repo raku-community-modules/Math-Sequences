@@ -1,6 +1,5 @@
 # Utilities for spelling out numbers as words
 
-use v6.c;
 use Lingua::EN::Numbers;
 
 sub as-words($number, :$lang='en') is export {
@@ -12,3 +11,5 @@ sub as-words-en($number) {
 
     cardinal($number);
 }
+
+# vim: expandtab shiftwidth=4

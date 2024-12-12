@@ -1,8 +1,8 @@
-use Math::Sequences::Integer; # -*- mode: perl6 -*-
-
 use Test;
 
-plan(11);
+use Math::Sequences::Integer;
+
+plan 11;
 
 is ℤ.elems, Inf, "Infinite integers";
 is ℤ.of, ::Int, "Integers are Ints";
@@ -20,5 +20,4 @@ my @prime-keys = <prime-powers primes-less-than-n primes prime-powers-from-zero>
 cmp-ok %primes.keys, '~~', set(@prime-keys), "Search for names of prime sequences";
 cmp-ok %primes.map(*.value[0]), '~~', set(0,1,2,2), "Search for sequences 'prime'";
 
-done-testing;
-# vim: sw=4 softtabstop=4 expandtab ai ft=perl6
+# vim: expandtab shiftwidth=4
