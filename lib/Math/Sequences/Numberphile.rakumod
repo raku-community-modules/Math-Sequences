@@ -301,24 +301,24 @@ our @A316667 is export = spiral-knight;
 # Real digits
 #==========================================================
 #| Real digits
-proto sub real-digits($x, $b, *%args) is export {*}
+proto sub real-digits(Numeric:D $x, Numeric:D $b, *%args) is export {*}
 
-multi sub real-digits($x,
-					  $b = 10,
+multi sub real-digits(Numeric:D $x is copy,
+					  Numeric:D $b = 10,
 					  $n is copy = Whatever,
 					  Numeric:D :$tol = 10e-14,
 					  :len(:$length) is copy = Inf) {
-	my $abs-x = abs($x);
+	if $x == 0 { return 0, 0}
+	$x = abs($x);
 	my @digits;
-	my $current = $abs-x;
+	my $current = $x;
 
 	if $length.isa(Whatever) { $length = Inf }
 
 	if $n.isa(Whatever) { $n = $x.log($b).floor}
-	if $n.isa(Whatever) { $n = $x.log($b).floor}
 	my $exp = $n;
 
-	while $current > $tol && @digits.elems < $length {
+	while $current / $x > $tol && @digits.elems < $length {
 		my $digit = floor($current / ($b ** $exp));
 		@digits .= push($digit);
 		$current -= $digit * ($b ** $exp);
@@ -336,8 +336,8 @@ our constant $sqrt5 = 2.23606797749978969640917366873127623544061835961152572427
 
 our constant \ϕ is export = (1.FatRat + $sqrt5) / 2.FatRat ;
 
-sub phi-number-system(Int:D $n, :$tol = 10e-16, :$length is copy = Whatever) is export {
-	if $length.isa(Whatever) { $length = 2 * (sqrt(5) * abs($n)).log(ϕ).floor + 3; }
+sub phi-number-system(Int:D $n, Numeric:D :$tol = 10e-16, :$length is copy = Whatever) is export {
+	if $length.isa(Whatever) { $length = 2 * ($sqrt5 * abs($n)).log(ϕ).floor + 1; }
 	my ($digits, $exp) = real-digits($n, ϕ, :$tol, :$length);
-	$exp <<->> ($digits.grep(* == 1, :k) >>+>> 1)
+	return $exp <<->> ($digits.grep(* == 1, :k) >>+>> 1);
 }
