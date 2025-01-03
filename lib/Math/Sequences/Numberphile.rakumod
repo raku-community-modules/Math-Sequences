@@ -297,4 +297,47 @@ sub spiral-knight() {
 # and moving to the lowest available unvisited square at each step.
 our @A316667 is export = spiral-knight;
 
-# vim: expandtab shiftwidth=4
+#==========================================================
+# Real digits
+#==========================================================
+#| Real digits
+proto sub real-digits($x, $b, *%args) is export {*}
+
+multi sub real-digits($x,
+					  $b = 10,
+					  $n is copy = Whatever,
+					  Numeric:D :$tol = 10e-14,
+					  :len(:$length) is copy = Inf) {
+	my $abs-x = abs($x);
+	my @digits;
+	my $current = $abs-x;
+
+	if $length.isa(Whatever) { $length = Inf }
+
+	if $n.isa(Whatever) { $n = $x.log($b).floor}
+	if $n.isa(Whatever) { $n = $x.log($b).floor}
+	my $exp = $n;
+
+	while $current > $tol && @digits.elems < $length {
+		my $digit = floor($current / ($b ** $exp));
+		@digits .= push($digit);
+		$current -= $digit * ($b ** $exp);
+		$exp--;
+	}
+
+	return @digits, $n + 1;
+}
+
+#==========================================================
+# Phi number system
+#==========================================================
+# Using N[Sqrt[5].100] in Wolfram Language
+our constant $sqrt5 = 2.236067977499789696409173668731276235440618359611525724270897245410520925637804899414414408378782275.FatRat;
+
+our constant \ϕ is export = (1.FatRat + $sqrt5) / 2.FatRat ;
+
+sub phi-number-system(Int:D $n, :$tol = 10e-16, :$length is copy = Whatever) is export {
+	if $length.isa(Whatever) { $length = 2 * (sqrt(5) * abs($n)).log(ϕ).floor + 3; }
+	my ($digits, $exp) = real-digits($n, ϕ, :$tol, :$length);
+	$exp <<->> ($digits.grep(* == 1, :k) >>+>> 1)
+}
