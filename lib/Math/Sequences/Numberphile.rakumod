@@ -301,7 +301,7 @@ our @A316667 is export = spiral-knight;
 # Real digits
 #==========================================================
 #| Real digits
-proto sub real-digits(Numeric:D $x, Numeric:D $b, *%args) is export {*}
+proto sub real-digits(Numeric:D $x, Numeric:D $b = 10, $n = Whatever, *%args) is export {*}
 
 multi sub real-digits(Int:D $x, *@args, *%args) {
 	return real-digits($x.FatRat, |@args, |%args);
@@ -311,7 +311,7 @@ multi sub real-digits(Numeric:D $x is copy,
 					  Numeric:D $b = 10,
 					  $n is copy = Whatever,
 					  Numeric:D :$tol = 10e-14,
-					  :len(:$length) is copy = Inf) {
+					  :l(:len(:$length)) is copy = Inf) {
 	if $x == 0 { return 0, 0}
 	$x = abs($x);
 	my @digits;
@@ -319,7 +319,7 @@ multi sub real-digits(Numeric:D $x is copy,
 
 	if $length.isa(Whatever) { $length = Inf }
 	die 'The argument $length is expected to be a positive integer or Whatever.'
-	unless $length ~~ Int:D && $length > 0;
+	unless ($length === Inf || $length ~~ Int:D) && $length > 0;
 
 	if $n.isa(Whatever) { $n = $x.log($b).floor}
 	die 'The third argument is expected to be a number or Whatever.' unless $n ~~ Numeric:D;
