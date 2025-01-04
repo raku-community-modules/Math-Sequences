@@ -331,8 +331,11 @@ multi sub real-digits(Numeric:D $x is copy,
 		my $bfe = [*] ($bf xx $exp);
 		while $current / $x > $tol && @digits.elems < $length {
 			#note (:$exp, power => $bf ** $exp, :$bfe);
-			my $digit = floor($current / $bfe);
+			#note '$current / $bfe => ', $current / $bfe;
+			my $r = $current / $bfe;
+			my $digit = do if $r.round(10 ** -100) == 1 { 1 } else { ($current / $bfe).floor };
 			@digits .= push($digit);
+			#note (:$digit, '$digit.FatRat * $bfe => ', $digit.FatRat * $bfe);
 			$current -= $digit.FatRat * $bfe;
 			#note (:$current);
 			$exp--;

@@ -16,7 +16,7 @@ subtest {
     isa-ok phi-number-system(32), List;
 
     # Expected ϕ-digits for 32
-    is phi-number-system(32), [7, 2, -3, -5, -9];
+    is phi-number-system(32), [7, 2, -3, -5, -8];
 
     # Getting many ϕ-digits
     my @res = phi-number-system(32, :40length);
