@@ -301,16 +301,21 @@ our @A316667 is export = spiral-knight;
 # Real digits
 #==========================================================
 #| Real digits
-proto sub real-digits(Numeric:D $x, Numeric:D $b = 10, $n = Whatever, *%args) is export {*}
+#| C<$x> -- number to convert.
+#| C<:$base> -- conversion base.
+#| C<:$n> -- digit exponent to start with.
+#| C<:$tol> -- tolerance to stop the conversion with.
+#| C<:$length> -- max number of digits.
+proto sub real-digits(Numeric:D $x, *@args, *%args) is export {*}
 
-multi sub real-digits(Int:D $x, *@args, *%args) {
-	return real-digits($x.FatRat, |@args, |%args);
+multi sub real-digits($x, Numeric:D $b = 10, $n = Whatever, *%args) {
+	return real-digits($x ~~ Int:D ?? $x.FatRat !! $x, :$b, :$n, |%args);
 }
 
 multi sub real-digits(Numeric:D $x is copy,
-					  Numeric:D $b = 10,
-					  $n is copy = Whatever,
-					  Numeric:D :$tol = 10e-14,
+					  Numeric:D :base(:$b) = 10,
+					  :start(:first-digit-exponent(:$n)) is copy = Whatever,
+					  Numeric:D :tolerance(:$tol) = 10e-14,
 					  :l(:len(:$length)) is copy = Inf) {
 	if $x == 0 { return 0, 0}
 	$x = abs($x);
@@ -373,8 +378,11 @@ our constant \phi is export = $fibonacci401 / $fibonacci400;
 our constant \ϕ is export = $fibonacci401 / $fibonacci400;
 #our constant \ϕ is export = (1.FatRat + $sqrt5) / 2.FatRat;
 
-#|
-sub phi-number-system(Int:D $n, Numeric:D :$tol = 10e-16, :$length is copy = Whatever) is export {
+#| Phi number system.
+#| C<$n> -- an integer number to convert.
+#| C<:$tol> -- tolerance to stop the conversion with.
+#| C<:$length> -- max number of digits.
+sub phi-number-system(Int:D $n, Numeric:D :tolerance(:$tol) = 10e-16, :l(:len(:$length)) is copy = Whatever) is export {
 	if $length.isa(Whatever) { $length = 2 * ($sqrt5 * abs($n)).log(ϕ).floor + 1; }
 	my ($digits, $exp) = real-digits($n.FatRat, ϕ, :$tol, :$length);
 	return $exp <<->> ($digits.grep(* == 1, :k) >>+>> 1);
