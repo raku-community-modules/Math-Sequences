@@ -2,5 +2,9 @@ Revision history for Math::Sequences
 
 {{$NEXT}}
 
+0.1.1  2025-01-04
+    - Implemented the subs real-digits and phi-number-system.
+    - Added golden ratio constants both \phi and \ϕ.
+
 0.1  2024-12-12T13:04:10+01:00
     - Initial version as Raku Community module

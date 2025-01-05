@@ -1,32 +1,25 @@
 {
-  "auth": "zef:raku-community-modules",
-  "authors": [
-    "Aaron Sherman",
-    "JJ Merelo"
-  ],
-  "build-depends": [
-  ],
-  "depends": [
-    "Lingua::EN::Numbers"
-  ],
-  "description": "Various mathematical sequences of moderate use",
-  "license": "Artistic-2.0",
-  "name": "Math::Sequences",
-  "perl": "6.c",
-  "provides": {
-    "Math::Sequences": "lib/Math/Sequences.rakumod",
-    "Math::Sequences::Integer": "lib/Math/Sequences/Integer.rakumod",
-    "Math::Sequences::Numberphile": "lib/Math/Sequences/Numberphile.rakumod",
-    "Math::Sequences::Real": "lib/Math/Sequences/Real.rakumod",
-    "Math::Util::Roman": "lib/Math/Util/Roman.rakumod",
-    "Math::Util::SpellNumbers": "lib/Math/Util/SpellNumbers.rakumod"
-  },
-  "resources": [
-  ],
-  "source-url": "https://github.com/raku-community-modules/Math-Sequences.git",
-  "tags": [
-  ],
-  "test-depends": [
-  ],
-  "version": "0.1"
+    "name": "Math::Sequences",
+    "description": "Various mathematical sequences of moderate use.",
+    "version": "0.1.1",
+    "authors": [
+        "Aaron Sherman",
+        "JJ Merelo",
+        "Anton Antonov"
+    ],
+    "auth": "zef:raku-community-modules",
+    "depends": [
+        "Lingua::EN::Numbers"
+    ],
+    "build-depends": [],
+    "provides": {
+        "Math::Sequences": "lib/Math/Sequences.rakumod",
+        "Math::Sequences::Integer": "lib/Math/Sequences/Integer.rakumod",
+        "Math::Sequences::Numberphile": "lib/Math/Sequences/Numberphile.rakumod",
+        "Math::Sequences::Real": "lib/Math/Sequences/Real.rakumod",
+        "Math::Util::Roman": "lib/Math/Util/Roman.rakumod",
+        "Math::Util::SpellNumbers": "lib/Math/Util/SpellNumbers.rakumod"
+    },
+    "license": "Artistic-2.0",
+    "source-url": "https://github.com/raku-community-modules/Math-Sequences.git"
 }
