@@ -267,8 +267,8 @@ sub planar-partitions($n) is export(:support) {
     }
 }
 
-#= The number of sequences that sum to $target where elements
-#= <= $n and elements in each sum are distinct.
+#| The number of sequences that sum to $target where elements
+#| <= $n and elements in each sum are distinct.
 sub strict-partitions(Int:D $n, Int :$target=$n) is export(:support) {
     return strict-partitions($n.abs, :$target).map({.map: {-$_}}) if $n < 0;
     return [$n] if $n==0 and not $target;
@@ -1186,7 +1186,7 @@ our %oeis-core is export = (
     "hofstadters-h" => @A005374
 );
 
-#={ OEIS "foo" will give the OEIS entry named or aliased foo
+#|{ OEIS "foo" will give the OEIS entry named or aliased foo
     OEIS "foo", :search will give a hash of all entries with
     labels that start with "foo"}
 sub OEIS($name, Bool :$search=False) is export {
