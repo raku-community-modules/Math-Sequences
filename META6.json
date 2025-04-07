@@ -1,18 +1,18 @@
 {
-  "auth": "zef:raku-community-modules",
+  "name": "Math::Sequences",
+  "description": "Various mathematical sequences of moderate use.",
+  "version": "0.1.2",
   "authors": [
     "Aaron Sherman",
     "JJ Merelo",
     "Anton Antonov"
   ],
-  "build-depends": [
-  ],
+  "auth": "zef:raku-community-modules",
   "depends": [
     "Lingua::EN::Numbers"
   ],
-  "description": "Various mathematical sequences of moderate use.",
-  "license": "Artistic-2.0",
-  "name": "Math::Sequences",
+  "build-depends": [],
+  "test-depends": [],
   "provides": {
     "Math::Sequences": "lib/Math/Sequences.rakumod",
     "Math::Sequences::Integer": "lib/Math/Sequences/Integer.rakumod",
@@ -21,12 +21,8 @@
     "Math::Util::Roman": "lib/Math/Util/Roman.rakumod",
     "Math::Util::SpellNumbers": "lib/Math/Util/SpellNumbers.rakumod"
   },
-  "resources": [
-  ],
-  "source-url": "https://github.com/raku-community-modules/Math-Sequences.git",
-  "tags": [
-  ],
-  "test-depends": [
-  ],
-  "version": "0.1.1"
+  "resources": [],
+  "license": "Artistic-2.0",
+  "tags": [],
+  "source-url": "https://github.com/raku-community-modules/Math-Sequences.git"
 }

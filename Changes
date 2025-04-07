@@ -2,6 +2,10 @@ Revision history for Math::Sequences
 
 {{$NEXT}}
 
+0.1.2  2025-01-13T06:39:10-05:00
+    - Removed the implementions of the subs real-digits and phi-number-system since they are now in "Math::NumberTheory".
+    - Similarly, removed the golden ratio constants both \phi and \ϕ (now in "Math::NumberTheory".)
+
 0.1.1  2025-01-05T22:31:10+01:00
     - Implemented the subs real-digits and phi-number-system.
     - Added golden ratio constants both \phi and \ϕ.
